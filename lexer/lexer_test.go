@@ -6,15 +6,16 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-  input := `
-		var five = 5;
-		var ten = 10;
 
-		var add = fun(x, y) {
-			x + y;
-		};
+	input := `
+	var five = 5;
+	var ten = 10;
 
-		var result = add(five, ten);
+	var add = fun(x, y) {
+		x + y;
+	};
+
+	var result = add(five, ten);
 	`
 
 	tests := []struct {
@@ -75,4 +76,24 @@ func TestNextToken(t *testing.T) {
 				i, tt.expectedLiteral, tok.Literal)
 		}
   }
+}
+
+func BenchmarkNextToken(b *testing.B) {
+
+	input := `
+	var five = 5;
+	var ten = 10;
+
+	var add = fun(x, y) {
+		x + y;
+	};
+
+	var result = add(five, ten);
+	`
+	
+	l := New(input)
+
+	for i := 0; i < b.N; i++ {
+		l.NextToken()
+	}
 }
