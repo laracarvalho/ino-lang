@@ -22,9 +22,9 @@ const (
 	BANG     = "!"
 	ASTERISK = "*"
 	SLASH    = "/"
-	
+
 	EQ     = "=="
-  NOT_EQ = "!="
+	NOT_EQ = "!="
 
 	LT = "<"
 	GT = ">"
@@ -49,8 +49,8 @@ const (
 )
 
 var keywords = map[string]TokenType{
-	"fun": FUNCTION,
-	"var": VAR,
+	"fun":    FUNCTION,
+	"var":    VAR,
 	"true":   TRUE,
 	"false":  FALSE,
 	"if":     IF,
@@ -62,5 +62,6 @@ func LookupIdent(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok
 	}
+
 	return IDENT
 }
