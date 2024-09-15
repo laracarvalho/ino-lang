@@ -16,5 +16,13 @@ Syntax example:
   var result = add(five, ten);
 ```
 
+## Installing
+
+- Clone the repository: `git clone https://github.com/laracarvalho/ino-lang.git`;
+- No dependencies, so no go install necessary;
+- Run `go run main.go` to access the REPL;
+- If you prefer, build the application: `go build` and run `./main`;
+- Run tests with `go test`;
+
 
 * This project is NOT aimed at production value.
