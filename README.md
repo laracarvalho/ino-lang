@@ -1,5 +1,5 @@
 # INO
-INO: Interpreter in G(o). Toy language to learn more about lexers, intepreters, and lang-making with Go, using the [Writing An Interpreter In Go](https://interpreterbook.com/) book as reference.
+INO: **I**nterpreter i**n** G**o**. Toy language to learn more about lexers, intepreters, and lang-making with Go, using the [Writing An Interpreter In Go](https://interpreterbook.com/) book as reference.
 
 The WAIIG book creates Monkey lang for its examples, and I'm taking creative and educational liberty of changing the lang and expanding until I reach the limit of my comprehension of the subject.
 
