@@ -1,8 +1,9 @@
 package lexer
 
 import (
-  "testing"
-  "github.com/laracarvalho/ino-lang/token"
+	"testing"
+
+	"github.com/laracarvalho/ino-lang/token"
 )
 
 func TestNextToken(t *testing.T) {
@@ -28,12 +29,14 @@ func TestNextToken(t *testing.T) {
 
 	10 == 10;
 	10 != 5;
+	"foobar"
+	"foo bar"
 	`
 
 	tests := []struct {
 		expectedType    token.TokenType
 		expectedLiteral string
-	} {
+	}{
 		{token.VAR, "var"},
 		{token.IDENT, "five"},
 		{token.ASSIGN, "="},
@@ -107,10 +110,12 @@ func TestNextToken(t *testing.T) {
 		{token.NOT_EQ, "!="},
 		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
+		{token.STRING, "foobar"},
+		{token.STRING, "foo bar"},
 		{token.EOF, ""},
 	}
 
-  l := New(input)
+	l := New(input)
 
 	for i, tt := range tests {
 		tok := l.NextToken()
@@ -124,7 +129,7 @@ func TestNextToken(t *testing.T) {
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q",
 				i, tt.expectedLiteral, tok.Literal)
 		}
-  }
+	}
 }
 
 func BenchmarkNextToken(b *testing.B) {
@@ -139,7 +144,7 @@ func BenchmarkNextToken(b *testing.B) {
 
 	var result = add(five, ten);
 	`
-	
+
 	l := New(input)
 
 	for i := 0; i < b.N; i++ {
