@@ -1,11 +1,24 @@
 package evaluator
 
-import "github.com/laracarvalho/ino-lang/object"
+import (
+	"fmt"
+
+	"github.com/laracarvalho/ino-lang/object"
+)
 
 // TODO: It would be interesting to add a head to go against tail (instead of returning all array except first item, returns all array except last)
 // TODO: Add pop() as well! Maybe maps, reduce??
 
 var builtins = map[string]*object.Builtin{
+	"print": &object.Builtin{
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
+			}
+
+			return NULL
+		},
+	},
 	"len": &object.Builtin{
 		Fn: func(args ...object.Object) object.Object {
 			if len(args) != 1 {
